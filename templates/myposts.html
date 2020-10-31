@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class = "container-fluid p-0 ">
+
+{% if messages %}
+{% for message in messages %}
+
+
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show " role="alert">
+    <strong>{{ message }}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+</div>
+
+    
+            <h3>Username Will be here</h3>
+        
+       
+    <h1>My Posts</h1>
+            <button type="button" class="btn btn-primary my-2" data-toggle="modal" data-target="#exampleModal">Add New Post</button>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Your Post Here</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="myposts" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Your Post Title:</label>
+                        <input type="text" required name="title" class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Post Description:</label>
+                        <textarea class="form-control" required  name="desc"rows='4' id="message-text"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">Post Image:</label><br>
+                         <input type="file" accept="image/*"  name="img" capture="camera">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Send Post</button>
+                    </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+            </div>
+
+        <table class="table table-hover table-dark table-bordered">
+        <thead>
+           <tr>
+            <th scope="col" style="width:5rem">S No.</th>
+            <th scope="col" style="width:15rem">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Image</th>
+            <th scope="col">Edit Post</th>
+            </tr>
+        </thead>
+        <tbody>
+             {% for post in posts %}
+            <tr>
+                <th scope="row">{{post.id}} </th>
+                <td>{{post.title}}</td>
+                <td class="text-justify">{{post.desc}}</td>
+                <td><a href="http://127.0.0.1:8000/media/{{post.image}}">{{post.image}}</a> </td>
+                
+        <td> <a type="button" class="btn btn-info" href="{% url 'edit_post' post.id %}">Edit</a>
+            <a type="button" class="btn btn-danger mt-3" href="{% url 'delete_post' post.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+        </table>
+                    
+{% endblock content %}

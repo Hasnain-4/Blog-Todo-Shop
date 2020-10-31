@@ -1,0 +1,365 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    body{
+        box-sizing:border-box;
+        background-color:#000e0c;
+       
+    }
+    h1{
+        text-transform: uppercase;
+        margin-top:2rem;
+         font-family: 'Sansita Swashed', cursive;
+         letter-spacing:5px;
+        color:#9fff00;
+        text-shadow: 2px 3px 5px red;
+    }
+#services p {
+    {% comment %} margin-top: 1rem; {% endcomment %}
+    text-align: center;
+    font-size:.8rem;
+    color:black;
+
+}
+.h2-secondary{
+    font-size:1.3rem;
+    margin-top:1rem;
+    letter-spacing:2px;
+    color:black;
+}
+
+.btn2{
+    {% comment %} display:none; {% endcomment %}
+    {% comment %} margin-top:-5rem; {% endcomment %}
+    background-color:#0e0e4c;
+    color:white;
+    border-radius:4px;
+}
+.btn2:hover{
+    background-color:#000e0c;
+}
+.btn1{
+    {% comment %} display:none; {% endcomment %}
+    {% comment %} margin-top:-5rem; {% endcomment %}
+    background-color:#651854;
+    color:white;
+}
+#no{
+  text-decoration:none;
+}
+.box img {
+    width: 100%;
+    margin: auto;
+    height: 15rem;
+    {% comment %} border-radius: .4rem; {% endcomment %}
+
+}
+
+.box img:hover + .btn{   
+    {% comment %} display: inline-block; {% endcomment %}
+    
+}
+
+#services .box {
+    width:18rem;
+    {% comment %} border: 1px solid brown; {% endcomment %}
+    margin: 24px 2px;
+    box-shadow: 0 0 2px white;
+    padding: 10px;
+    text-align:center;
+    transition: 0.5s all ease-in-out; 
+    background-color:white;
+}
+
+#services .box:hover {
+    box-shadow: 0 0 10px black;
+    transform: scale(1.05);
+    
+}
+
+#services {
+  
+    display: flex;
+    flex-wrap: wrap;
+   
+}
+{% comment %} Media Query {% endcomment %}
+@media only screen and (max-width: 700px) {
+   
+#services .box {
+    width:9rem;
+    
+  }
+  .box img {
+    height: 10rem;
+ }
+}
+@media only screen and (max-width: 320px) {
+   
+#services .box {
+    width:8rem;
+    
+  }
+}
+</style>
+
+<div class = "container-fluid p-0 ">
+
+{% if messages %}
+{% for message in messages %}
+
+
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show " role="alert">
+    <strong>{{ message }}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+</div>
+
+
+<h1 class="text-center">John's Shop</h1>
+
+{% comment %} Modal for adding Element {% endcomment %}
+
+
+{% comment %} New Part {% endcomment %}
+<div class="container-fluid">
+
+  <nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Clothes</a>
+    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Electronics</a>
+    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Utencils</a>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+  
+<div class="text-center">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Item</button>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Your Item{{username}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="shop" enctype="multipart/form-data">
+        {% csrf_token %}
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Title</label>
+            <input type="text" required name="etitle" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Description</label>
+            <textarea class="form-control" required name="edesc" id="message-text"></textarea>
+          </div>
+          <div class="form-group">
+              <label class="col-form-label">Image</label><br>
+                <input type="file" required name="eimg" accept="image/*" capture="camera">
+          </div>
+          <div class="form-group">
+            <label for="recipient" class="col-form-label">Price</label>
+            <input type="number" required name="eprice" class="form-control" id="recipient">
+          </div>
+           <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="submit" name="btn" class="btn btn-success">Add</button>
+          </div>
+        </form>
+      </div>
+     
+    </div>
+  </div>
+</div>
+{% comment %} Modal end {% endcomment %}
+
+<div class="container-fluid ml-2">
+
+     <div id="services">
+     {% for edata in ecomm %}
+
+     <a id="no" href="#">
+            <div class="box ">
+                <img src="{{edata.image.url}}" alt="">
+                <h2 class="h2-secondary center">{{edata.title}}</h2>
+                <p>{{edata.desc}}</p>
+                <a href="/#">
+                <button class="btn btn2">Add to Cart</button>
+                </a>
+
+                <a href="{% url 'viewitem' edata.id %}">
+                <button class="btn btn2 btn1">View</button>
+                </a>
+
+                <a href=" {% url 'delete' edata.id %} ">
+                <button name="btndel" class="btn btn2">delete?</button>
+                </a>
+            </div>
+     </a>
+     {% endfor %}
+           
+    </div>
+</div>
+  </div>
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+  <div class="text-center">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo">Add Item</button>
+</div>
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Your Item{{username}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="shop" enctype="multipart/form-data">
+        {% csrf_token %}
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Title</label>
+            <input type="text" required name="etitle1" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Description</label>
+            <textarea class="form-control" required name="edesc1" id="message-text"></textarea>
+          </div>
+          <div class="form-group">
+              <label class="col-form-label">Image</label><br>
+                <input type="file" required name="eimg1" accept="image/*" capture="camera">
+          </div>
+          <div class="form-group">
+            <label for="recipient" class="col-form-label">Price</label>
+            <input type="number" required name="eprice1" class="form-control" id="recipient">
+          </div>
+           <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="submit" name="btn1" class="btn btn-success">Add</button>
+          </div>
+        </form>
+      </div>
+     
+    </div>
+  </div>
+</div>
+{% comment %} Modal end {% endcomment %}
+
+<div class="container-fluid ml-2">
+
+     <div id="services">
+     {% for edata1 in ecomm1 %}
+
+     <a id="no" href="#">
+            <div class="box ">
+                <img src="{{edata1.image.url}}" alt="">
+                <h2 class="h2-secondary center">{{edata1.title}}</h2>
+                <p>{{edata1.desc}}</p>
+                <a href="/#">
+                <button class="btn btn2">Add to Cart</button>
+                </a>
+                <a href="{% url 'viewitem1' edata1.id %}">
+
+                <button class="btn btn2 btn1">View</button>
+                </a>
+                
+                <a href=" {% url 'delete1' edata1.id %} ">
+                <button name="btndel1" class="btn btn2">delete?</button>
+                </a>
+            </div>
+     </a>
+     {% endfor %}
+           
+    </div>
+</div>
+
+  </div>
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+  
+  <div class="text-center">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo">Add Item</button>
+</div>
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Your Item{{username}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="shop" enctype="multipart/form-data">
+        {% csrf_token %}
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Title</label>
+            <input type="text" required name="etitle2" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Description</label>
+            <textarea class="form-control" required name="edesc2" id="message-text"></textarea>
+          </div>
+          <div class="form-group">
+              <label class="col-form-label">Image</label><br>
+                <input type="file" required name="eimg2" accept="image/*" capture="camera">
+          </div>
+          <div class="form-group">
+            <label for="recipient" class="col-form-label">Price</label>
+            <input type="number" required name="eprice2" class="form-control" id="recipient">
+          </div>
+           <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="submit" name="btn2" class="btn btn-success">Add</button>
+          </div>
+        </form>
+      </div>
+     
+    </div>
+  </div>
+</div>
+{% comment %} Modal end {% endcomment %}
+
+<div class="container-fluid ml-2">
+
+     <div id="services">
+     {% for edata2 in ecomm2 %}
+
+     <a id="no" href="#">
+            <div class="box ">
+                <img src="{{edata2.image.url}}" alt="">
+                <h2 class="h2-secondary center">{{edata2.title}}</h2>
+                <p>{{edata2.desc}}</p>
+                
+                <button class="btn btn2">Add to Cart</button>
+                <a href="{% url 'viewitem2' edata2.id %}">
+                <button class="btn btn2 btn1">View</button>
+                </a>
+                <a href=" {% url 'delete2' edata2.id %} ">
+                <button name="btndel2" class="btn btn2">delete?</button>
+                </a>
+            </div>
+     </a>
+     {% endfor %}
+           
+    </div>
+</div>
+</div>
+</div>
+</div>
+{% endblock content %}

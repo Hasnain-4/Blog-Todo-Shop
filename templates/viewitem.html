@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% comment %}     
+<div class="container-fluid ml-2">
+
+     <div id="services">
+     {% for edata2 in ecomm2 %}
+
+     <a id="no" href="#">
+            <div class="box ">
+                <img src="{{edata2.image.url}}" alt="">
+                <h2 class="h2-secondary center">{{edata2.title}}</h2>
+                <p>{{edata2.desc}}</p>
+                <a href="/#">
+                <button class="btn btn2">Add to Cart</button>
+                </a>
+                <button class="btn btn2 btn1">View</button>
+                <a href=" {% url 'delete2' edata2.id %} ">
+                <button name="btndel2" class="btn btn2">delete?</button>
+                </a>
+            </div>
+     </a>
+     {% endfor %}
+           
+    </div>
+</div> {% endcomment %}
+{% if view1 %}
+<div class="container">
+
+    <div class="card mb-3">
+        <img class="card-img-top" style="width:40%;height:50%" src="{{view1.image.url}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{view1.title}}</h5>
+                <p class="card-text">{{view1.desc}}</p>
+                {% comment %} <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> {% endcomment %}
+            </div>
+    </div>
+
+</div>
+{% endif %}
+{% if view2 %}
+<div class="container">
+
+    <div class="card mb-3">
+        <img class="card-img-top" style="width:40%;height:50%" src="{{view2.image.url}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{view2.title}}</h5>
+                <p class="card-text">{{view2.desc}}</p>
+                {% comment %} <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> {% endcomment %}
+            </div>
+    </div>
+
+</div>
+{% endif %}
+{% if view3 %}
+<div class="container">
+
+    <div class="card mb-3">
+        <img class="card-img-top" style="width:40%;height:50%" src="{{view3.image.url}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{view3.title}}</h5>
+                <p class="card-text">{{view3.desc}}</p>
+                {% comment %} <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> {% endcomment %}
+            </div>
+    </div>
+
+</div>
+{% endif %}
+
+{% endblock content %}

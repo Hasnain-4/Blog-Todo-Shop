@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    {% comment %} body{
+        background-color:#d9ccdc;
+    } {% endcomment %}
+    .card{
+        background-color: #330303;
+        color:white;
+        border-radius:0rem;
+        box-shadow: 0px 4px 8px black;
+    }
+    .todocls{
+        background-color: #54084c;
+        color:white;
+        box-shadow: 0px 7px 8px black;
+    }
+    hr{
+        background-color:white;
+    }
+    .b{
+        padding:5px;
+        width:100%;   
+        background-color:black; 
+        color:white; 
+    }
+    .b:hover{ 
+        background-color:#330303; 
+        
+    }
+</style>
+<div class = "container-fluid p-0 ">
+
+{% if messages %}
+{% for message in messages %}
+
+
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show " role="alert">
+    <strong>{{ message }}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+</div>
+
+    <div class="row  mt-3">
+    <div class="col-7">
+    
+    <div class="container">
+    {% for todo_post in todo_pos %}
+        <div class="card mb-2">
+            <div class="card-body">
+               <h4 class="text-center">{{todo_post.title}}</h4>
+               <hr>
+               <p class="text-justify">{{todo_post.desc}}</p>
+               <hr>
+            <p class="small">{{todo_post.time}}</p>
+            <a type="text" href="{% url 'delete_todo' todo_post.id %}">Delete</a>
+            <br>
+            {% comment %} <p class="complete" style="cursor:pointer" >Completed</p>
+            <div class="text-center">
+            <button type="button" id="done" style="display:none" class="btn btn-sm btn-outline-success">Done</button>
+            </div> {% endcomment %}
+
+            </div>
+        </div>
+        
+    {% endfor %}
+       
+    </div>
+    </div>
+    
+    <div class="col-5 pr-4 " >
+    
+    <form action="todo" method="post">
+    {% csrf_token %}
+
+    <div class="card todocls " >
+        <div class="card-body ">
+        <h5 class="text-center">Add Your Todo List</h5>
+        <hr>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Title</label>
+                <input type="text" required class="form-control" name="todo_title" id="exampleFormControlInput1" placeholder="Enter Your Todo Title">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Description</label>
+                 <textarea class="form-control" rows="5" required name="todo_desc" id="exampleFormControlTextarea1" placeholder="Type Here..." rows="3"></textarea>
+            </div>
+            
+            <button class="b" type="submit" >Add Todo</button>
+
+        </div>
+    </div>
+    </form>
+
+        </div>
+
+    </div>
+
+    {% comment %} <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+           
+        $(document).ready(function(){
+
+            $('.complete').click(function(){
+                $("#done").show();
+            })
+        })
+    </script> {% endcomment %}
+{% endblock content %}
