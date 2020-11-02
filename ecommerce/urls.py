@@ -11,6 +11,9 @@ urlpatterns = [
     path('viewitem/<int:id>', views.viewitem, name='viewitem'),
     path('viewitem1/<int:id>', views.viewitem1, name='viewitem1'),
     path('viewitem2/<int:id>', views.viewitem2, name='viewitem2'),
-    # path('contact', views.contact, name='contact'),
+    # path('order', views.order, name='order'),
+    path('order/<int:id>', views.order, name='order'),
+    path('order1/<int:id>', views.order1, name='order1'),
+    path('order2/<int:id>', views.order2, name='order2'),
     # path('addpost', views.addpost, name='addpost'),
 ]

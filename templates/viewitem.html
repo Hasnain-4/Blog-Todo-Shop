@@ -2,71 +2,109 @@
 
 {% block content %}
 
-{% comment %}     
-<div class="container-fluid ml-2">
+<style>
+    .itm{
+        display:flex;
+        align-items: center;
+        
+    }
+    body{
+        background-color:#0e0121;
+        color:white;
+    }
+    .card-body{
+        margin-left:4rem;
+    }
+    .card-img-top{
+       height:20rem;
+       width:15rem;
+        margin-left:5rem;
+    }
+    .itm1{
+        margin-top:4rem;
+        margin-left:3rem;
+    }
+    hr{
+        height: 1px;
+        background-color: #ccc;
+        
+    }
+    
+</style>
 
-     <div id="services">
-     {% for edata2 in ecomm2 %}
+{% if view1 %}
 
-     <a id="no" href="#">
-            <div class="box ">
-                <img src="{{edata2.image.url}}" alt="">
-                <h2 class="h2-secondary center">{{edata2.title}}</h2>
-                <p>{{edata2.desc}}</p>
-                <a href="/#">
-                <button class="btn btn2">Add to Cart</button>
-                </a>
-                <button class="btn btn2 btn1">View</button>
-                <a href=" {% url 'delete2' edata2.id %} ">
-                <button name="btndel2" class="btn btn2">delete?</button>
-                </a>
-            </div>
-     </a>
-     {% endfor %}
+<div class="container ">
+   
+    <img class="img-fluid mt-3" src="https://source.unsplash.com/1600x900/?booking" style="height:20rem; width:28rem" name = "itemimg" alt="">
+    
+    <div class="itm float-right">
+   
+    <img class="img-fluid mt-5" style="box-shadow:0 0 10px" src="{{view1.image.url}}" name = "itemimg" alt="">
+    <div class="container itm1">
+    <h4 name = "itemtitle">{{view1.title}}</h4>
+    <p name = "itemdesc">{{view1.desc}}</p>
+   <hr>
+    {% comment %} <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> {% endcomment %}
+    <a href="{% url 'order' view1.id %}">
+    <button type="button" name="bttn1" class="btn mt-3 btn-outline-info">Order Now</button>
+    </a>
            
     </div>
-</div> {% endcomment %}
-{% if view1 %}
-<div class="container">
-
-    <div class="card mb-3">
-        <img class="card-img-top" style="width:40%;height:50%" src="{{view1.image.url}}" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">{{view1.title}}</h5>
-                <p class="card-text">{{view1.desc}}</p>
-                {% comment %} <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> {% endcomment %}
-            </div>
     </div>
 
 </div>
 {% endif %}
+
 {% if view2 %}
-<div class="container">
 
-    <div class="card mb-3">
-        <img class="card-img-top" style="width:40%;height:50%" src="{{view2.image.url}}" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">{{view2.title}}</h5>
-                <p class="card-text">{{view2.desc}}</p>
-                {% comment %} <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> {% endcomment %}
-            </div>
+<div class="container p-5">
+
+    <img class="img-fluid " src="https://source.unsplash.com/1600x900/?booking" style="height:20rem; width:28rem" name = "itemimg" alt="">
+    
+    <div class="itm float-right">
+   
+    <img class="img-fluid mt-5" style="box-shadow:0 0 10px"  src="{{view2.image.url}}" name = "itemimg1" alt="">
+    <div class="container itm1">
+    <h4 name = "itemtitle1">{{view2.title}}</h4>
+    <p name = "itemdesc1">{{view2.desc}}</p>
+   <hr>
+    {% comment %} <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> {% endcomment %}
+     <a href="{% url 'order1' view2.id %}">
+    <button type="button" name="bttn1" class="btn mt-3 btn-outline-info">Order Now</button>
+    </a>    
+    
     </div>
+    </div>
+    </form>
 
 </div>
 {% endif %}
+
 {% if view3 %}
-<div class="container">
 
-    <div class="card mb-3">
-        <img class="card-img-top" style="width:40%;height:50%" src="{{view3.image.url}}" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">{{view3.title}}</h5>
-                <p class="card-text">{{view3.desc}}</p>
-                {% comment %} <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> {% endcomment %}
-            </div>
+<div class="container p-5">
+
+    <img class="img-fluid" src="https://source.unsplash.com/1600x900/?booking" style="height:20rem; width:28rem" name = "itemimg" alt="">
+   
+    <div class="itm float-right">
+   
+    <img class="img-fluid mt-5"  style="box-shadow:0 0 10px" src="{{view3.image.url}}" name = "itemimg2" alt="">
+    <div class="container itm1">
+    <h4 name = "itemtitle2">{{view3.title}}</h4>
+    <p name = "itemdesc2">{{view3.desc}}</p>
+   <hr>
+    {% comment %} <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> {% endcomment %}
+     <a href="{% url 'order2' view3.id %}">
+    <button type="button" name="bttn1" class="btn mt-3 btn-outline-info">Order Now</button>
+    </a>     
+    
     </div>
+    </div>
+    </form>
 
 </div>
 {% endif %}
+
 
 {% endblock content %}

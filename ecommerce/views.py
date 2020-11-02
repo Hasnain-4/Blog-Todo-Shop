@@ -73,3 +73,44 @@ def viewitem2(request,id):
     viewitem3=Utencils.objects.get(id=id)
 
     return render(request, 'viewitem.html',{'view3':viewitem3})
+
+def order(request,id):
+    # if request.method == 'POST':
+    #     if 'bttn1' in request.POST:
+    #         img1 = request.FILES.get('itemimg')
+    #         title1 = request.POST.get('itemtitle')
+    #         desc1 = request.POST.get('itemdesc')
+    #         quantity1 = request.POST.get('itemquant')
+    #         return render(request,"order.html",{'img1':img1,'title1':title1,'desc1':desc1,'quantity1':quantity1})
+
+    #     if 'bttn2' in request.POST:
+    #         img2 = request.FILES.get('itemimg1')
+    #         title2 = request.POST.get('itemtitle1')
+    #         desc2 = request.POST.get('itemdesc1')
+    #         quantity2 = request.POST.get('itemquant1')
+    #         return render(request,"order.html",{'img2':img2,'title2':title2,'desc2':desc2,'quantity2':quantity2})
+
+    #     if 'bttn3' in request.POST:
+    #         img3 = request.FILES.get('itemimg2')
+    #         title3 = request.POST.get('itemtitle2')
+    #         desc3 = request.POST.get('itemdesc2')
+    #         quantity3 = request.POST.get('itemquant2')
+    #         return render(request,"order.html",{'img3':img3,'title3':title3,'desc3':desc3,'quantity3':quantity3})
+    
+    viewitem11=Clothes.objects.get(id=id)
+    return render(request, 'order.html',{'v1':viewitem11})
+
+# def order(request):
+#     if request.method == 'POST':
+#         if 'bttn1' in request.POST:
+#             quantity1 = request.POST.get('itemquant')
+#     viewitem11=Clothes.objects.get(id=id)
+#     return render(request, 'order.html',{'qunt1':quantity1,'v1':viewitem11})
+
+def order1(request,id):
+    viewitem21=Electronics.objects.get(id=id)
+    return render(request, 'order.html',{'v1':viewitem21})
+
+def order2(request,id):
+    viewitem31=Utencils.objects.get(id=id)
+    return render(request, 'order.html',{'v1':viewitem31})

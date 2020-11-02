@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if v1 %}
+
+    <div class="container">
+        <table class="table table-hover table-bordered table-dark">
+            <thead>
+                <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Image</th>
+                <th scope="col">Description</th>
+                <th scope="col">Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th scope="row">{{v1.title}}</th>
+                <td><img src="{{v1.image.url}}" style="height:5rem" alt=""></td>
+                <td>{{v1.desc}}</td>
+                <td><input class="form-control" type="number" placeholder="Enter Quantity"></td>
+                </tr>
+                <tr>
+            </tbody>
+            </table>
+
+    </div>
+    {% endif %}
+
+    <div class="container">
+            <h5 class="mb-3">Enter Your Details</h5>
+        <table class="table table-hover table-bordered table-dark">
+            <thead>
+                <tr>
+                <th scope="col">Address</th>
+                <th scope="col">District</th>
+                <th scope="col">Pin Code</th>
+                <th scope="col">Country</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th scope="row"><input class="form-control" type="text" placeholder="Enter Your Full Address"></th>
+                <td><input class="form-control" type="text" placeholder="Enter District"></td>
+                <td><input class="form-control" type="number" placeholder="Your PinCode"></td>
+                <td><input class="form-control" type="text" placeholder="Enter Country"></td>
+                </tr>
+                <tr>
+            </tbody>
+            </table>
+    </div>
+    <div class="text-center mb-4">
+    <button class="btn btn-outline-success text-center">Confirm Order</button>
+    </div>
+
+
+{% comment %} 
+
+{% if quantity2 %}
+
+    <div class="container">
+        <table class="table table-hover table-bordered table-dark">
+            <thead>
+                <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Image</th>
+                <th scope="col">Description</th>
+                <th scope="col">Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th scope="row">{{title2}}</th>
+                <td>{{img2}}</td>
+                <td>{{desc2}}</td>
+                <td>{{quantity2}}</td>
+                </tr>
+                <tr>
+            </tbody>
+            </table>
+    </div>
+{% endif %}
+
+{% if quantity3 %}
+
+    <div class="container">
+        <table class="table table-hover table-bordered table-dark">
+            <thead>
+                <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Image</th>
+                <th scope="col">Description</th>
+                <th scope="col">Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th scope="row">{{title3}}</th>
+                <td>{{img3}}</td>
+                <td>{{desc3}}</td>
+                <td>{{quantity3}}</td>
+                </tr>
+                <tr>
+            </tbody>
+            </table>
+    </div>
+{% endif %} {% endcomment %}
+
+{% endblock content %}

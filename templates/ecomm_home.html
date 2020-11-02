@@ -192,7 +192,7 @@
      <div id="services">
      {% for edata in ecomm %}
 
-     <a id="no" href="#">
+     <a id="no" href="{% url 'viewitem' edata.id %}">
             <div class="box ">
                 <img src="{{edata.image.url}}" alt="">
                 <h2 class="h2-secondary center">{{edata.title}}</h2>
@@ -265,7 +265,7 @@
      <div id="services">
      {% for edata1 in ecomm1 %}
 
-     <a id="no" href="#">
+     <a id="no" href="{% url 'viewitem1' edata1.id %}">
             <div class="box ">
                 <img src="{{edata1.image.url}}" alt="">
                 <h2 class="h2-secondary center">{{edata1.title}}</h2>
@@ -340,7 +340,7 @@
      <div id="services">
      {% for edata2 in ecomm2 %}
 
-     <a id="no" href="#">
+     <a id="no" href="{% url 'viewitem2' edata2.id %}">
             <div class="box ">
                 <img src="{{edata2.image.url}}" alt="">
                 <h2 class="h2-secondary center">{{edata2.title}}</h2>
