@@ -29,6 +29,14 @@
         background-color: #ccc;
         
     }
+    .heading1{
+        {% comment %} display:inline; {% endcomment %}
+        width:30rem;
+        margin-top:2rem;
+        font-size:2.5rem;
+        display:inline-block;
+    }
+
     
 </style>
 
@@ -36,18 +44,19 @@
 
 <div class="container ">
    
-    <img class="img-fluid mt-3" src="https://source.unsplash.com/1600x900/?booking" style="height:20rem; width:28rem" name = "itemimg" alt="">
-    
+    {% comment %} <img class="img-fluid mt-3" src="https://source.unsplash.com/1600x900/?booking" style="height:20rem; width:28rem" name = "itemimg" alt=""> {% endcomment %}
+   <h1 class="display-4 heading1">We Provide Products with Quality <p class="Lead text-info mt-4">Feel Free To Contact, We Are Here To Help : )</p></h1>  
     <div class="itm float-right">
    
     <img class="img-fluid mt-5" style="box-shadow:0 0 10px" src="{{view1.image.url}}" name = "itemimg" alt="">
     <div class="container itm1">
     <h4 name = "itemtitle">{{view1.title}}</h4>
     <p name = "itemdesc">{{view1.desc}}</p>
+    <p name = "itemprice">Rs - {{view1.price}}</p>
    <hr>
     {% comment %} <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> {% endcomment %}
     <a href="{% url 'order' view1.id %}">
-    <button type="button" name="bttn1" class="btn mt-3 btn-outline-info">Order Now</button>
+    <button type="button" name="bttn1" class="btn mt-3 mb-3 btn-outline-info">Order Now</button>
     </a>
            
     </div>
@@ -60,14 +69,15 @@
 
 <div class="container p-5">
 
-    <img class="img-fluid " src="https://source.unsplash.com/1600x900/?booking" style="height:20rem; width:28rem" name = "itemimg" alt="">
-    
+    {% comment %} <img class="img-fluid " src="https://source.unsplash.com/1600x900/?booking" style="height:20rem; width:28rem" name = "itemimg" alt=""> {% endcomment %}
+   <h1 class="display-4 heading1">We Provide Products with Quality <p class="Lead text-info mt-4">Feel Free To Contact, We Are Here To Help : )</p></h1>  
     <div class="itm float-right">
    
     <img class="img-fluid mt-5" style="box-shadow:0 0 10px"  src="{{view2.image.url}}" name = "itemimg1" alt="">
     <div class="container itm1">
     <h4 name = "itemtitle1">{{view2.title}}</h4>
     <p name = "itemdesc1">{{view2.desc}}</p>
+    <p name = "itemprice1">Rs - {{view2.price}}</p>
    <hr>
     {% comment %} <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> {% endcomment %}
      <a href="{% url 'order1' view2.id %}">
@@ -85,14 +95,14 @@
 
 <div class="container p-5">
 
-    <img class="img-fluid" src="https://source.unsplash.com/1600x900/?booking" style="height:20rem; width:28rem" name = "itemimg" alt="">
-   
+   <h1 class="display-4 heading1">We Provide Products with Quality <p class="Lead text-info mt-4">Feel Free To Contact, We Are Here To Help : )</p></h1>  
     <div class="itm float-right">
    
     <img class="img-fluid mt-5"  style="box-shadow:0 0 10px" src="{{view3.image.url}}" name = "itemimg2" alt="">
     <div class="container itm1">
     <h4 name = "itemtitle2">{{view3.title}}</h4>
     <p name = "itemdesc2">{{view3.desc}}</p>
+    <p name = "itemprice2">Rs - {{view3.price}}</p>
    <hr>
     {% comment %} <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> {% endcomment %}
      <a href="{% url 'order2' view3.id %}">

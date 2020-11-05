@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Clothes,Electronics,Utencils,Beauty_Products
+from .models import *
 # Create your views here.
 def shop(request):
     clothes = Clothes.objects.all()
@@ -114,3 +114,60 @@ def order1(request,id):
 def order2(request,id):
     viewitem31=Utencils.objects.get(id=id)
     return render(request, 'order.html',{'v1':viewitem31})
+
+def order_product(request):
+    if request.method == 'POST':
+        otitle = request.POST.get('ordertitle')
+        odesc = request.POST.get('orderdesc')
+        oimg = request.FILES.get('orderimg')
+        oqnty = request.POST.get('orderqnty')
+        oaddress = request.POST.get('orderaddress')
+        opin = request.POST.get('orderpin')
+        odist = request.POST.get('orderdist')
+        ocntry = request.POST.get('ordercntry')
+        itemprice = request.POST.get('orderprice')
+        bill = int(oqnty)*int(itemprice)
+
+        order_data = ProductDetail(ortitle=otitle,ordesc=odesc,orimg=oimg,orqnty=oqnty,oraddress=oaddress,orpin=opin,ordist=odist,orcntry=ocntry,orprice=bill)
+        order_data.save()
+
+        # bill = ProductDetail.objects.get('orprice'[-1])
+        return render(request, 'order_success.html',{'bill':bill})
+
+# def order_product1(request):
+#     if request.method == 'POST':
+#         otitle1 = request.POST.get('ordertitle1')
+#         odesc1 = request.POST.get('orderdesc1')
+#         oimg1 = request.FILES.get('orderimg1')
+#         oqnty1 = request.POST.get('orderqnty1')
+#         oaddress1 = request.POST.get('orderaddress1')
+#         opin1 = request.POST.get('orderpin1')
+#         odist1 = request.POST.get('orderdist1')
+#         ocntry1 = request.POST.get('ordercntry1')
+
+#         order_data1 = Electronics_ProductDetail(ortitle1=otitle1,ordesc1=odesc1,orimg1=oimg1,orqnty1=oqnty1,oraddress1=oaddress1,orpin1=opin1,ordist1=odist1,orcntry1=ocntry1)
+#         order_data1.save()
+
+#         return render(request, 'order_success.html')
+
+# def order_product2(request):
+#     if request.method == 'POST':
+#         otitle2 = request.POST.get('ordertitle2')
+#         odesc2 = request.POST.get('orderdesc2')
+#         oimg2 = request.FILES.get('orderimg2')
+#         oqnty2 = request.POST.get('orderqnty2')
+#         oaddress2 = request.POST.get('orderaddress2')
+#         opin2 = request.POST.get('orderpin2')
+#         odist2 = request.POST.get('orderdist2')
+#         ocntry2 = request.POST.get('ordercntry2')
+
+#         order_data2 = Utencils_ProductDetail(ortitle2=otitle2,ordesc2=odesc2,orimg2=oimg2,orqnty2=oqnty2,oraddress2=oaddress2,orpin2=opin2,ordist2=odist2,orcntry2=ocntry2)
+#         order_data2.save()
+
+#         return render(request, 'order_success.html')
+
+def success(request):
+    import random
+    at = random.randint(456,9999)
+
+    return render(request, 'success.html',{'at':at})

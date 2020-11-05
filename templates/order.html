@@ -1,35 +1,44 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+body{
+    background-color:#005567;
+    color:white;
+}
+</style>
 
+<form action="{% url 'order_product' %}" method="post" enctype="multipart/form-data">
+{% csrf_token %}
 {% if v1 %}
 
-    <div class="container">
+    <div class="container-fluid mt-3">
         <table class="table table-hover table-bordered table-dark">
             <thead>
                 <tr>
                 <th scope="col">Title</th>
                 <th scope="col">Image</th>
                 <th scope="col">Description</th>
+                <th scope="col">Price</th>
                 <th scope="col">Quantity</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                <th scope="row">{{v1.title}}</th>
-                <td><img src="{{v1.image.url}}" style="height:5rem" alt=""></td>
-                <td>{{v1.desc}}</td>
-                <td><input class="form-control" type="number" placeholder="Enter Quantity"></td>
+                <th  scope="row"><input name="ordertitle" class="form-control" value="{{v1.title}}" type="text"></th>
+                <td><img src="{{v1.image.url}}" name="orderimg" value="{{v1.image.url}}" style="height:5rem" alt=""></td>
+                <td ><input name="orderdesc" class="form-control" value="{{v1.desc}}" type="text"></td>
+                <td ><input name="orderprice" class="form-control" value="{{v1.price}}" type="text"></td>
+                <td><input class="form-control" type="number"  name="orderqnty" placeholder="Enter Quantity"></td>
                 </tr>
                 <tr>
             </tbody>
             </table>
 
     </div>
-    {% endif %}
-
-    <div class="container">
-            <h5 class="mb-3">Enter Your Details</h5>
+    
+    <div class="container-fluid ">
+            <h5 class="mb-3">Enter Some Additional Details</h5>
         <table class="table table-hover table-bordered table-dark">
             <thead>
                 <tr>
@@ -41,18 +50,137 @@
             </thead>
             <tbody>
                 <tr>
-                <th scope="row"><input class="form-control" type="text" placeholder="Enter Your Full Address"></th>
-                <td><input class="form-control" type="text" placeholder="Enter District"></td>
-                <td><input class="form-control" type="number" placeholder="Your PinCode"></td>
-                <td><input class="form-control" type="text" placeholder="Enter Country"></td>
+                <th scope="row"><input name="orderaddress" class="form-control" type="text" placeholder="Enter Your Full Address"></th>
+                <td><input class="form-control"  name="orderdist" type="text" placeholder="Enter District"></td>
+                <td><input class="form-control" type="number" name="orderpin" placeholder="Your PinCode"></td>
+                <td><input class="form-control" type="text" name="ordercntry" placeholder="Enter Country"></td>
                 </tr>
                 <tr>
             </tbody>
             </table>
     </div>
     <div class="text-center mb-4">
-    <button class="btn btn-outline-success text-center">Confirm Order</button>
+    <button type="submit" class="btn btn-outline-success text-center">Confirm Order</button>
     </div>
+    {% endif %}
+
+</form>
+
+{% comment %} 
+<form action="order_product1" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{% if v2 %}
+
+    <div class="container-fluid  mt-3">
+        <table class="table table-hover table-bordered table-dark">
+            <thead>
+                <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Image</th>
+                <th scope="col">Description</th>
+                <th scope="col">Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th scope="row"><input name="ordertitle1" class="form-control" value="{{v2.title}}" type="text"></th>
+                <td><img src="{{v2.image.url}}" value="{{v2.image.url}}" name="orderimg1" style="height:5rem" alt=""></td>
+                <td ><input name="orderdesc1" class="form-control" value="{{v2.desc}}" type="text"></td>
+                <td><input class="form-control" type="number"  name="orderqnty1" placeholder="Enter Quantity"></td>
+                </tr>
+                <tr>
+            </tbody>
+            </table>
+
+    </div>
+    
+    <div class="container-fluid ">
+            <h5 class="mb-3">Enter Some Additional Details</h5>
+        <table class="table table-hover table-bordered table-dark">
+            <thead>
+                <tr>
+                <th scope="col">Address</th>
+                <th scope="col">District</th>
+                <th scope="col">Pin Code</th>
+                <th scope="col">Country</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th scope="row"><input name="orderaddress1" class="form-control" type="text" placeholder="Enter Your Full Address"></th>
+                <td><input class="form-control"  name="orderdist1" type="text" placeholder="Enter District"></td>
+                <td><input class="form-control" type="number" name="orderpin1" placeholder="Your PinCode"></td>
+                <td><input class="form-control" type="text" name="ordercntry1" placeholder="Enter Country"></td>
+                </tr>
+                <tr>
+            </tbody>
+            </table>
+    </div>
+    <div class="text-center mb-4">
+    <button type="submit" class="btn btn-outline-success text-center">Confirm Order</button>
+    </div>
+    {% endif %}
+
+</form>
+
+
+<form action="order_product2" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{% if v3 %}
+
+    <div class="container-fluid mt-3">
+        <table class="table table-hover table-bordered table-dark">
+            <thead>
+                <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Image</th>
+                <th scope="col">Description</th>
+                <th scope="col">Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th scope="row"><input name="ordertitle2" class="form-control" value="{{v3.title}}" type="text"></th>
+                <td><img src="{{v3.image.url}}" value="{{v3.image.url}}" name="orderimg2" style="height:5rem" alt=""></td>
+                <td ><input name="orderdesc2" class="form-control" value="{{v3.desc}}" type="text"></td>
+                <td><input class="form-control" type="number"  name="orderqnty2" placeholder="Enter Quantity"></td>
+                </tr>
+                <tr>
+            </tbody>
+            </table>
+
+    </div>
+
+    
+    <div class="container-fluid ">
+            <h5 class="mb-3">Enter Some Additional Details</h5>
+        <table class="table table-hover table-bordered table-dark">
+            <thead>
+                <tr>
+                <th scope="col">Address</th>
+                <th scope="col">District</th>
+                <th scope="col">Pin Code</th>
+                <th scope="col">Country</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th scope="row"><input name="orderaddress2" class="form-control" type="text" placeholder="Enter Your Full Address"></th>
+                <td><input class="form-control"  name="orderdist2" type="text" placeholder="Enter District"></td>
+                <td><input class="form-control" type="number" name="orderpin2" placeholder="Your PinCode"></td>
+                <td><input class="form-control" type="text" name="ordercntry2" placeholder="Enter Country"></td>
+                </tr>
+                <tr>
+            </tbody>
+            </table>
+    </div>
+    <div class="text-center mb-4">
+    <button type="submit" class="btn btn-outline-success text-center">Confirm Order</button>
+    </div>
+    {% endif %}
+
+</form> {% endcomment %}
+
 
 
 {% comment %} 

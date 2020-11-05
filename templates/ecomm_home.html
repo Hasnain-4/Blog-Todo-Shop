@@ -195,7 +195,9 @@
      <a id="no" href="{% url 'viewitem' edata.id %}">
             <div class="box ">
                 <img src="{{edata.image.url}}" alt="">
-                <h2 class="h2-secondary center">{{edata.title}}</h2>
+                <h6 class="text-dark mt-3">{{edata.price}} Rs</h6>
+                <hr>
+                <h2 class="h2-secondary center" style="display:inline">{{edata.title}}</h2>
                 <p>{{edata.desc}}</p>
                 <a href="/#">
                 <button class="btn btn2">Add to Cart</button>
@@ -268,6 +270,8 @@
      <a id="no" href="{% url 'viewitem1' edata1.id %}">
             <div class="box ">
                 <img src="{{edata1.image.url}}" alt="">
+                 <h6 class="text-dark mt-3">{{edata1.price}} Rs</h6>
+                <hr>
                 <h2 class="h2-secondary center">{{edata1.title}}</h2>
                 <p>{{edata1.desc}}</p>
                 <a href="/#">
@@ -343,6 +347,8 @@
      <a id="no" href="{% url 'viewitem2' edata2.id %}">
             <div class="box ">
                 <img src="{{edata2.image.url}}" alt="">
+                 <h6 class="text-dark mt-3">{{edata2.price}} Rs</h6>
+                <hr>
                 <h2 class="h2-secondary center">{{edata2.title}}</h2>
                 <p>{{edata2.desc}}</p>
                 
