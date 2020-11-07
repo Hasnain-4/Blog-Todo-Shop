@@ -28,7 +28,7 @@ def home(request):
         auth.append(myarticles['author'])
         tit.append(myarticles['title'])
         pub.append(myarticles['publishedAt'])
-        url.append(myarticles['description'])
+        url.append(myarticles['url'])
     # print(author,title,publishedAt )
         data = zip(auth,tit,pub,url)
 
@@ -82,3 +82,9 @@ def delete_post(request, id):
     messages.success(request, "Post Deleted Successfully")
     return redirect('myposts')
  #   return render(request, 'myposts.html')
+
+def signup(request):
+    return render(request,'signup.html')
+
+def signin(request):
+    return render(request,'signin.html')

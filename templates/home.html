@@ -5,12 +5,30 @@
     body{
         background-color:#000222;
     }
+    .jumbotron{
+        box-shadow:0 0 10px #005567;
+        background-color:#000;
+        color:white;
+    }
+    .crd1{
+        width: 17rem;
+        background-color:#000;
+        color:white;
+         box-shadow:0 0 10px #005567;
+    }
+    hr{
+        background-color:white;
+    }
+    .card{
+        width:17.2rem;
+       
+    }
 </style>
 <div class="row mt-3">
 
     <div class="col-9">
     {% for post in posts %}
-         <div class="jumbotron jumbotron-fluid bg-white" style="box-shadow:0 0 5px">
+         <div class="jumbotron jumbotron-fluid ">
                 <div class="container text-center">
                     <h3 class="text-center">{{post.title}}</h3>
                     <hr>
@@ -28,12 +46,12 @@
      </div>
 
     <div class="col-3">
-       <div class="card" style="width: 18rem;">
-       <h6 class="m-3 ">Today’s news</h6>
+       <div class="card">
+       <h6 class="m-3 text-dark">Today’s news</h6>
                 {% for auth,title,pub,url in data %}
             <ul class="list-group list-group-flush">
                 
-                <li class="list-group-item"><small><a href="{{url}}">{{title}}</a> by <b>{{auth}}</b> <br>at {{pub}} </small></li>          
+                <li class="list-group-item crd1"><small><a href="{{url}}">{{title}}</a> by <b>{{auth}}</b> <br>at {{pub}} </small></li>          
                 
             </ul>
                 {% endfor %}

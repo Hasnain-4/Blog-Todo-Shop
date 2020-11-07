@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}
+| signin
+{% endblock title %}
+{% block content %}
+
+<style>
+ body{
+    background:url('https://images.unsplash.com/photo-1471680148227-c1189f1ff41f?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color:white;
+    
+}
+.inp{
+    background-color:#005567;
+    color:#fff;
+}
+</style>
+<div class="jumbotron jumbotron-fluid p-4" style="background-color:black;">
+  <div class="container">
+    <h1 class="display-4 text-white text-center mt-3">Sign in</h1>
+    <p class=" text-white text-center">Please Enter Valid Username & Password Otherwise Error Will Be Occured </p>
+  </div>
+</div>
+
+<div class = "container-fluid ">
+
+{% if messages %}
+{% for message in messages %}
+
+
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show " role="alert">
+    <strong>{{ message }}</strong>
+  <button type="button" class="close " data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+</div>
+
+<div class = "container">
+
+    <form action="signin" method="post">
+
+   {% csrf_token %}
+
+  <div class="form-group row">
+    <label for="Name" class="col-sm-2 col-form-label">Username</label>
+    <div class="col-sm-10">
+      <input type="name" name = "username" placeholder="Enter Your Registered Email Address" class="inp form-control" id="name">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" name = "password" placeholder="Enter Your Password" class="inp form-control" id="inputPassword3">
+    </div>
+  </div>
+
+  <br>
+  
+  <div class="row">
+  <div class="col-9">
+      <button type="submit" class="btn btn-outline-info mb-4">Sign In</button>
+  </div>
+
+    <div class="col">
+                {% comment %} <small class="text-muted ml-2">
+                    <a href="{% url 'password_reset' %}">Forgot Password?</a>
+                </small> {% endcomment %}
+    </div>
+  </div>
+</form>
+
+
+  
+</div>
+{% endblock  %}

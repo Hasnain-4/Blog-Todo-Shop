@@ -6,20 +6,27 @@
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>John's Blog</title>
   </head>
   <body>
+  <style>
+  .navbar{
+    box-shadow:0 0 10px #005567;
+  }
+  </style>
   
+
     {% comment %} navbar {% endcomment %}
 
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color:black;">
     
     <a class="navbar-brand text-white" href="#">
-        <img src="static/images/hasnain.gif" width="30" height="30" class="d-inline-block align-top" alt="">
+        <img src="{% static 'images/hasnain.gif' %}" width="30" height="30" class="d-inline-block align-top" alt="">
         John's Blog
     </a>
   
@@ -49,9 +56,16 @@
       </li>
       
     </ul>
+    <a href="{% url 'signup' %}">
+      <button class="btn btn-sm btn-outline-light" type="button">Signup</button>
+    </a>
+    <a href="{% url 'signin' %}">
+      <button class="btn btn-sm btn-outline-light mx-2 " type="button">Signin</button>
+    </a>
+
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button id="srch" class="btn btn-sm btn-outline-light my-2 my-sm-0" type="submit"><i class="fa fa-search"> </i> </button>
     </form>
   </div>
 </nav>

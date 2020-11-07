@@ -2,13 +2,29 @@
 
 {% block content %}
 
+<style>
+     body{
+        background-color:#000e0c;
+        color:white;
+    }
+    hr{
+        background-color:white;
+        
+    }
+</style>
     <div class="container mt-4">
 
 <form action="" method="post" enctype="multipart/form-data">
 {% csrf_token %}
+    
+    <h5 class="text-center">Update Your Post</h5>
+    <div class="container pl-5 pr-5 pb-5 pt-3">
+    <hr>
     {{form.as_p}}
-    <button type="submit" class="btn btn-primary mb-4">Update Post</button>
+ 
+    <button type="submit" class="btn btn-outline-info float-right mb-4">Update Post</button>
 
+    </div>
 </form>
     </div>
 

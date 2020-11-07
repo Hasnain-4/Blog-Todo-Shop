@@ -3,8 +3,19 @@
 {% block content %}
 <style>
 body{
+    background:url('https://images.unsplash.com/photo-1471680148227-c1189f1ff41f?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+.inp{
     background-color:#005567;
-    color:white;
+    color:#fff;
+}
+.table{
+    background-color:#000;
+    box-shadow:0 0 10px #005567;
 }
 </style>
 
@@ -25,11 +36,11 @@ body{
             </thead>
             <tbody>
                 <tr>
-                <th  scope="row"><input name="ordertitle" class="form-control" value="{{v1.title}}" type="text"></th>
+                <th  scope="row"><input name="ordertitle" class="form-control" value="{{v1.title}}" readonly type="text"></th>
                 <td><img src="{{v1.image.url}}" name="orderimg" value="{{v1.image.url}}" style="height:5rem" alt=""></td>
-                <td ><input name="orderdesc" class="form-control" value="{{v1.desc}}" type="text"></td>
-                <td ><input name="orderprice" class="form-control" value="{{v1.price}}" type="text"></td>
-                <td><input class="form-control" type="number"  name="orderqnty" placeholder="Enter Quantity"></td>
+                <td ><input name="orderdesc" class="form-control" value="{{v1.desc}}" readonly type="text"></td>
+                <td ><input name="orderprice" class="form-control" value="{{v1.price}}" readonly type="text"></td>
+                <td><input class="form-control" required type="number"  name="orderqnty" placeholder="Enter Quantity"></td>
                 </tr>
                 <tr>
             </tbody>
@@ -38,7 +49,7 @@ body{
     </div>
     
     <div class="container-fluid ">
-            <h5 class="mb-3">Enter Some Additional Details</h5>
+            <h5 class="mb-3 text-center" style="color:#fff;">Enter Some Additional Details</h5>
         <table class="table table-hover table-bordered table-dark">
             <thead>
                 <tr>
@@ -50,10 +61,10 @@ body{
             </thead>
             <tbody>
                 <tr>
-                <th scope="row"><input name="orderaddress" class="form-control" type="text" placeholder="Enter Your Full Address"></th>
-                <td><input class="form-control"  name="orderdist" type="text" placeholder="Enter District"></td>
-                <td><input class="form-control" type="number" name="orderpin" placeholder="Your PinCode"></td>
-                <td><input class="form-control" type="text" name="ordercntry" placeholder="Enter Country"></td>
+                <th scope="row"><input name="orderaddress" required class="inp form-control" type="text" placeholder="Enter Your Full Address"></th>
+                <td><input class="inp form-control" required name="orderdist" type="text" placeholder="Enter District"></td>
+                <td><input class="inp form-control" required type="number" name="orderpin" placeholder="Your PinCode"></td>
+                <td><input class="inp form-control" required type="text" name="ordercntry" placeholder="Enter Country"></td>
                 </tr>
                 <tr>
             </tbody>

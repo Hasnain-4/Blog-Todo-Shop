@@ -1,6 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+     body{
+        background-color:#000e0c;
+        color:white;
+    }
+    .table{
+        background-color:#000;
+        box-shadow:0 0 10px #005567;
+    }
+    hr{
+        background-color:white;
+        
+    }
+</style>
 <div class = "container-fluid p-0 ">
 
 {% if messages %}
@@ -18,16 +32,13 @@
 
 {% endif %}
 
-</div>
+</div>        
+       <div class="container-fluid mt-4 mb-4 text-center">
+    <h4>My Posts</h4>
+    <hr>
+            <button type="button" class="btn btn-outline-warning my-2" data-toggle="modal" data-target="#exampleModal">Add New Post</button>
 
-    
-            <h3>Username Will be here</h3>
-        
-       
-    <h1>My Posts</h1>
-            <button type="button" class="btn btn-primary my-2" data-toggle="modal" data-target="#exampleModal">Add New Post</button>
-
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade text-dark" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
@@ -42,11 +53,11 @@
 
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Your Post Title:</label>
-                        <input type="text" required name="title" class="form-control" id="recipient-name">
+                        <input type="text" required name="title" class="form-control" placeholder="Enter Title" id="recipient-name">
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">Post Description:</label>
-                        <textarea class="form-control" required  name="desc"rows='4' id="message-text"></textarea>
+                        <textarea class="form-control" required  name="desc"rows='4' placeholder="Enter Description" id="message-text"></textarea>
                     </div>
                     <div class="form-group">
                         <label class="col-form-label">Post Image:</label><br>
@@ -60,6 +71,7 @@
                 </div>
                 </div>
             </div>
+       </div>
             </div>
 
         <table class="table table-hover table-dark table-bordered">
@@ -75,13 +87,13 @@
         <tbody>
              {% for post in posts %}
             <tr>
-                <th scope="row">{{post.id}} </th>
+                <th scope="row">{{forloop.counter}} </th>
                 <td>{{post.title}}</td>
                 <td class="text-justify">{{post.desc}}</td>
                 <td><a href="http://127.0.0.1:8000/media/{{post.image}}">{{post.image}}</a> </td>
                 
-        <td> <a type="button" class="btn btn-info" href="{% url 'edit_post' post.id %}">Edit</a>
-            <a type="button" class="btn btn-danger mt-3" href="{% url 'delete_post' post.id %}">Delete</a></td>
+        <td> <a type="button" class="btn btn-outline-info" href="{% url 'edit_post' post.id %}">Edit</a>
+            <a type="button" class="btn btn-outline-danger mt-3" href="{% url 'delete_post' post.id %}">Delete</a></td>
             </tr>
             {% endfor %}
             

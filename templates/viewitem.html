@@ -43,9 +43,13 @@
 {% if view1 %}
 
 <div class="container ">
-   
+   <div class="row">
     {% comment %} <img class="img-fluid mt-3" src="https://source.unsplash.com/1600x900/?booking" style="height:20rem; width:28rem" name = "itemimg" alt=""> {% endcomment %}
-   <h1 class="display-4 heading1">We Provide Products with Quality <p class="Lead text-info mt-4">Feel Free To Contact, We Are Here To Help : )</p></h1>  
+   <div class="col-7 mt-4">
+   <h1 class="display-4 heading1">We Provide Products with Quality </h1>  
+   <p class="Lead text-info mt-4">Feel Free To Contact, We Are Here To Help : )</p>
+   </div>
+   <div class="col-5">
     <div class="itm float-right">
    
     <img class="img-fluid mt-5" style="box-shadow:0 0 10px" src="{{view1.image.url}}" name = "itemimg" alt="">
@@ -58,19 +62,25 @@
     <a href="{% url 'order' view1.id %}">
     <button type="button" name="bttn1" class="btn mt-3 mb-3 btn-outline-info">Order Now</button>
     </a>
+   </div>
            
     </div>
     </div>
+   </div>
 
 </div>
 {% endif %}
 
 {% if view2 %}
 
-<div class="container p-5">
-
+<div class="container ">
+<div class="row">
+    <div class="col-7 mt-4">
     {% comment %} <img class="img-fluid " src="https://source.unsplash.com/1600x900/?booking" style="height:20rem; width:28rem" name = "itemimg" alt=""> {% endcomment %}
-   <h1 class="display-4 heading1">We Provide Products with Quality <p class="Lead text-info mt-4">Feel Free To Contact, We Are Here To Help : )</p></h1>  
+   <h1 class="display-4 heading1">We Provide Products with Quality</h1>  
+    <p class="Lead text-info mt-4">Feel Free To Contact, We Are Here To Help : )</p>
+    </div>
+    <div class="col-5">
     <div class="itm float-right">
    
     <img class="img-fluid mt-5" style="box-shadow:0 0 10px"  src="{{view2.image.url}}" name = "itemimg1" alt="">
@@ -81,10 +91,12 @@
    <hr>
     {% comment %} <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> {% endcomment %}
      <a href="{% url 'order1' view2.id %}">
-    <button type="button" name="bttn1" class="btn mt-3 btn-outline-info">Order Now</button>
+    <button type="button" name="bttn1" class="btn mt-3 mb-3 btn-outline-info">Order Now</button>
     </a>    
     
     </div>
+    </div>
+</div>
     </div>
     </form>
 
@@ -93,9 +105,14 @@
 
 {% if view3 %}
 
-<div class="container p-5">
+<div class="container">
 
-   <h1 class="display-4 heading1">We Provide Products with Quality <p class="Lead text-info mt-4">Feel Free To Contact, We Are Here To Help : )</p></h1>  
+<div class="row">
+    <div class="col-7 mt-4">
+   <h1 class="display-4 heading1">We Provide Products with Quality</h1>  
+    <p class="Lead text-info mt-4">Feel Free To Contact, We Are Here To Help : )</p>
+    </div>
+    <div class="col-5">
     <div class="itm float-right">
    
     <img class="img-fluid mt-5"  style="box-shadow:0 0 10px" src="{{view3.image.url}}" name = "itemimg2" alt="">
@@ -106,10 +123,12 @@
    <hr>
     {% comment %} <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> {% endcomment %}
      <a href="{% url 'order2' view3.id %}">
-    <button type="button" name="bttn1" class="btn mt-3 btn-outline-info">Order Now</button>
+    <button type="button" name="bttn1" class="btn mt-3 mb-3 btn-outline-info">Order Now</button>
     </a>     
     
     </div>
+    </div>
+</div>
     </div>
     </form>
 

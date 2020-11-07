@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+| signup
+{% endblock title %}
+{% block content %}
+<style>
+ body{
+    background:url('https://images.unsplash.com/photo-1471680148227-c1189f1ff41f?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color:white;
+    
+}
+.inp{
+    background-color:#005567;
+    color:#fff;
+}
+</style>
+<div class="jumbotron jumbotron-fluid p-4" style="background-color:black;">
+  <div class="container">
+    <h1 class="display-4 text-white text-center mt-3">Sign Up</h1>
+    <p class=" text-white text-center">Remember That, The Email & Username Should Be Unique Otherwise Error Will Occur. </p>
+  </div>
+</div>
+
+<div class = "container-fluid ">
+
+{% if messages %}
+{% for message in messages %}
+
+
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show " role="alert">
+    <strong>{{ message }}</strong>
+  <button type="button" class="close " data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+</div>
+
+<div class="container mb-5 pl-5 pt-2 pr-5 pb-5">
+
+<form action="sign_up" method="post">
+
+{% csrf_token %}
+  
+  <div class="form-group row">
+    <label for="exampleInputName1" class="col-sm-2 col-form-label">First Name</label>
+    <div class="col-sm-10">
+      <input type="name" name = "first_name" placeholder="Please Enter Your First Name" class=" inp form-control" id="exampleInputName1">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="exampleInputName1" class="col-sm-2 col-form-label">Last Name</label>
+    <div class="col-sm-10">
+      <input type="name" name = "last_name" placeholder="Please Enter Your Last Name" class="inp form-control" id="exampleInputName1">
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="exampleInputName1" class="col-sm-2 col-form-label">Username</label>
+    <div class="col-sm-10">
+      <input type="name" name = "username" placeholder="Please Enter Username" class="inp form-control" id="exampleInputName1">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="exampleInputEmail1" class="col-sm-2 col-form-label">Email address</label>
+    <div class="col-sm-10">
+      <input type="email" name = "email" placeholder="Please Enter Your Email" class="inp form-control" id="emailHelp">
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="exampleInputPassword1" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" name = "password1" placeholder="Please Enter Your Password" class="inp form-control" id="p">
+    </div>
+  </div>
+  
+  <div class="form-group row">
+    <label for="exampleInputPassword1" class="col-sm-2 col-form-label">Confirm Password</label>
+    <div class="col-sm-10">
+      <input type="password" name = "password2" placeholder="Please Enter Your Password Again" class="inp form-control" id="cp">
+    </div>
+  </div>
+
+  
+
+<br>
+  
+
+  <button type="submit" class="btn btn-outline-info mt-4">Sign Up</button>
+
+
+</form>
+
+</div>
+{% endblock  %}
